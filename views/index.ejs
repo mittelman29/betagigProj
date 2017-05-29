@@ -2,9 +2,48 @@
     <head>
     	<title><%= title %></title>
     	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
     <body>
-    	<h1><%= title %></h1>
-  		<p>Welcome to <%= title %></h1>
+      <div style="width:90%;margin:auto;">
+        <div style="float:left;"><img src="/images/<%= users[logged_in_user].image %>" width=100 /></div>
+        <div style="height:70px;padding-top:30px;float:left;"><h1><%= users[logged_in_user].name %> ==> Inbox</h1></div>
+      </div>
+
+      <div style="clear:both">&nbsp;</div>
+
+      <!-- Column Headers -->
+      <div style="width:90%;margin:auto;">
+        <div class="div_convo_pane" style="width:10%;text-align:center;">FROM</div>
+        <div class="div_convo_pane" style="width:15%">DATE</div>
+        <div class="div_convo_pane" style="width:75%">CONVERSATION</div>
+      </div>
+
+      <div style="width:90%;height:400px;margin:auto;border:1px solid #ddd;overflow-y:auto;">
+      <% for(var i = 0; i < conversations.length; ++i) { %>
+        <div class="div_convo div_convo_<%= i % 2 %>" alt="<%= i %>" title="Conversation with <%= users[conversations[i].recipient].name %>">
+            <div class="div_convo_pane" style="width:10%;text-align:center;">
+              <img src="/images/<%= users[conversations[i].recipient].image %>" height=80/><BR>
+              <b><%= users[conversations[i].recipient].name %></b>
+            </div>
+            <div class="div_convo_pane" style="width:15%;">
+              <span style=""><%= conversations[i].messages[0].date %></span>
+            </div>
+            <div class="div_convo_pane" style="width:75%;">
+              <span style="font-size:1.2em;font-weight:bold;"><%= conversations[i].messages[0].subject %></span><BR>
+              <span style="font-size:.9em;"><%- conversations[i].messages[0].message.substring(0,100) %>...</span>
+            </div>
+
+        </div>
+      <% } %>
+
+      </div>
+
+    <script>
+      $( ".div_convo" ).click(function() {
+        var id = $( this ).attr('alt');
+        window.open('/messages/' + id + '/','_self');
+      });
+    </script>
     </body>
 </html>

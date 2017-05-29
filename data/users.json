@@ -1,0 +1,8 @@
+{
+  "users": [
+    { "name": "Mike", "image": "mike.png" },
+    { "name": "Brian", "image": "brian.jpeg" },
+    { "name": "Danielle", "image": "danielle.png" },
+    { "name": "Amy", "image": "amy.png" }
+  ]
+}
