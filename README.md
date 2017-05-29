@@ -14,6 +14,6 @@ Ex:
 	# git clone https://github.com/mittelman29/betagigProj
 	# cd betagigProj
   	# npm install
-        # npm start
+	# npm start
 
 Navigate to http://localhost:3000/ to see the "Inbox". Click on a converation to see the details of that conversation.
