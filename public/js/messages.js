@@ -1,3 +1,0 @@
-$(function() {
-  $.getJSON('api', updateMessages);
-});
